@@ -1,7 +1,7 @@
 <template>
-  <el-container>
+  <div class="wrapper">
     home
-  </el-container>
+  </div>
 </template>
 
 <script>
