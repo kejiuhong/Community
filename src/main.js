@@ -5,8 +5,8 @@ import fastClick from 'fastclick'
 import App from './App'
 import router from './router'
 import 'element-ui/lib/theme-chalk/index.css'
-import '@/assets/style/border.css'
-import '@/assets/style/reset.css'
+import 'styls/border.css'
+import 'styls/reset.css'
 
 Vue.config.productionTip = false
 fastClick.attach(document.body)

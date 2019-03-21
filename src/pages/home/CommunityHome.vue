@@ -15,6 +15,12 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
+<style lang="stylus" scoped>
+.wrapper
+  position: absolute
+  top: .8rem
+  left: 0
+  right: 0
+  bottom: .8rem
+  padding: 0 .2rem
 </style>

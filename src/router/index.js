@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import CommunityHome from '@/pages/home/CommunityHome'
+import CommunityHome from 'pages/home/CommunityHome'
 
 Vue.use(Router)
 
