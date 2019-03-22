@@ -1,0 +1,43 @@
+{
+  "ret":true,
+  "data":{
+    "headerNav": [
+      {
+        "id": "home",
+        "name": "首页",
+        "act": true
+      }, {
+        "id": "dicover",
+        "name":" 发现",
+        "act": false
+      }, {
+        "id": "nearby",
+        "name": "附近",
+        "act": false
+      }, {
+        "id": "me",
+        "name": "我的",
+        "act": false
+      }
+    ],
+    "footerNav": [
+      {
+        "id": "home",
+        "name": "&#xe755;",
+        "act": true
+      }, {
+        "id": "dicover",
+        "name":" &#xe629;",
+        "act": false
+      }, {
+        "id": "message",
+        "name": "&#xe60d;",
+        "act": false
+      }, {
+        "id": "me",
+        "name": "&#xe66c;",
+        "act": false
+      }
+    ]
+  }
+}

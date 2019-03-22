@@ -1,41 +1,41 @@
 <template>
   <div class="footer-nav">
-    <slot></slot>
-    <div class="nav" v-for="item of nav" :key="item.id" :class="{activeClass:item.act}" @click="handleClick">{{item.name}}</div>
-    <slot></slot>
+    <div class="nav iconfont" v-for="item of nativeNav" :key="item.id" :class="{activeClass:item.act}" @click="handleClick" v-html={{iconfont}} >{{item.name}}</div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'FooterNav',
+  props: {
+    nav: Array
+  },
   data () {
     return {
-      nav: [{
-        id: 'home',
-        name: '首页',
-        act: true
-      }, {
-        id: 'dicover',
-        name: '发现',
-        act: false
-      }, {
-        id: 'nearby',
-        name: '附近',
-        act: false
-      }, {
-        id: 'me',
-        name: '我的',
-        act: false
-      }],
-      activeValue: ['首页', '发现', '附近', '我的']
+      activeValue: ['首页', '发现', '附近', '我的'],
+      activefooter: ['&#xe755;', '&#xe629;', '&#xe60d;', '&#xe66c;']
+    }
+  },
+  computed: {
+    nativeNav () {
+      return this.nav
     }
   },
   methods: {
     handleClick (e) {
-      this.nav.forEach((el) => { el.act = false })
+      this.handleClickHeader(e)
+      this.handleClickFooter(e)
+    },
+    handleClickHeader (e) {
+      this.nativeNav.forEach((el) => { el.act = false })
       const eventIndex = this.activeValue.indexOf(e.target.innerText)
-      this.nav[eventIndex].act = true
+      this.nativeNav[eventIndex].act = true
+      console.log(this.nativeNav[eventIndex].act)
+    },
+    handleClickFooter (e) {
+      this.nativeNav.forEach((el) => { el.act = false })
+      const footerIndex = this.activefooter.indexOf(e.target.innerText)
+      this.nativeNav[footerIndex].act = true
     }
   }
 }

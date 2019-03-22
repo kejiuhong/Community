@@ -7,6 +7,7 @@ import router from './router'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'styls/border.css'
 import 'styls/reset.css'
+import 'styls/iconfont.css'
 
 Vue.config.productionTip = false
 fastClick.attach(document.body)
