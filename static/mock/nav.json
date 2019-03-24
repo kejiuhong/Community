@@ -1,42 +1,35 @@
+
 {
   "ret":true,
   "data":{
     "headerNav": [
       {
         "id": "home",
-        "name": "首页",
-        "act": true
+        "name": "首页"
       }, {
         "id": "dicover",
-        "name":" 发现",
-        "act": false
+        "name":" 动态"
       }, {
         "id": "nearby",
-        "name": "附近",
-        "act": false
-      }, {
-        "id": "me",
-        "name": "我的",
-        "act": false
+        "name": "附近"
       }
     ],
     "footerNav": [
       {
         "id": "home",
-        "name": "&#xe755;",
-        "act": true
+        "name": "&#xe607;"
       }, {
         "id": "dicover",
-        "name":" &#xe629;",
-        "act": false
+        "name":" &#xe608;"
+      }, {
+        "id": "add",
+        "name": "&#xe621;"
       }, {
         "id": "message",
-        "name": "&#xe60d;",
-        "act": false
+        "name": "&#xe62c;"
       }, {
         "id": "me",
-        "name": "&#xe66c;",
-        "act": false
+        "name": "&#xe603;"
       }
     ]
   }

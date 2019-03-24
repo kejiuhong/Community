@@ -1,6 +1,16 @@
 <template>
-  <div class="footer-nav">
-    <div class="nav iconfont" v-for="item of nativeNav" :key="item.id" :class="{activeClass:item.act}" @click="handleClick" v-html={{iconfont}} >{{item.name}}</div>
+  <div class="common-nav">
+    <slot name="left"></slot>
+    <div class="nav iconfont"
+        v-for="(item, index) of nativeNav"
+        :key="index"
+        :class="activeIndex === index ? 'activeClass':''"
+        @click="handleClick(index)"
+        v-html="item.name"
+      >
+      {{item.name}}
+    </div>
+    <slot name="right"></slot>
   </div>
 </template>
 
@@ -12,8 +22,7 @@ export default {
   },
   data () {
     return {
-      activeValue: ['首页', '发现', '附近', '我的'],
-      activefooter: ['&#xe755;', '&#xe629;', '&#xe60d;', '&#xe66c;']
+      activeIndex: 0
     }
   },
   computed: {
@@ -22,20 +31,10 @@ export default {
     }
   },
   methods: {
-    handleClick (e) {
-      this.handleClickHeader(e)
-      this.handleClickFooter(e)
-    },
-    handleClickHeader (e) {
-      this.nativeNav.forEach((el) => { el.act = false })
-      const eventIndex = this.activeValue.indexOf(e.target.innerText)
-      this.nativeNav[eventIndex].act = true
-      console.log(this.nativeNav[eventIndex].act)
-    },
-    handleClickFooter (e) {
-      this.nativeNav.forEach((el) => { el.act = false })
-      const footerIndex = this.activefooter.indexOf(e.target.innerText)
-      this.nativeNav[footerIndex].act = true
+    handleClick (index) {
+      // console.log(index)
+      this.nav.forEach((el) => { el.act = false })
+      this.activeIndex = index
     }
   }
 }
@@ -43,13 +42,13 @@ export default {
 
 <style lang="stylus" scoped>
 @import '~styls/baseStyl/varible.styl'
-.footer-nav
+.common-nav
   overflow: hidden
   display: flex
   position: fixed
-  bottom: 0
   width: 100%
   height: .7rem
+  background: #fff
   z-index: 9999
   .nav
     flex: 1
@@ -60,6 +59,7 @@ export default {
     text-align: center
     color: $titleColor
     font-size: $fontTitle
+    font-weight:bolder
   .activeClass
     color: $textActive
 </style>
