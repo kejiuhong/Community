@@ -1,15 +1,15 @@
 <template>
-  <div class="wrapper" v-show="isshow">
+  <div class="wrapper" v-show="this.isshow">
     <div class="container">
-      <div class="content-main animated" :class="{fadeOutDownBig:down}">
+      <div class="content-main animated bounceInUp" :class="{fadeOutDownBig:down}">
         <div class="add-title">
           新的一天在等你
         </div>
-        <div class="button-wrapper">
-          <div class="button animated bounceInUp" :class="{fadeOutDownBig:down}">
+        <div class="button-wrapper" @click="handleClickClose">
+          <router-link :to="'/release/'" tag="div" class="button animated bounceInUp" :class="{fadeOutDownBig:down}">
             <div class="trend"></div>
             <p>发动态</p>
-          </div>
+          </router-link>
           <div class="button animated bounceInUp" :class="{fadeOutDownBig:down}">
             <div class="trend">123</div>
             <p>发帖子</p>
@@ -22,12 +22,13 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'AddTool',
   data () {
     return {
-      down: false
+      down: false,
+      closeShow: false
     }
   },
   computed: {
@@ -42,7 +43,9 @@ export default {
       setTimeout(() => {
         _this.isshow = false
       }, 100)
-    }
+      this.changeAddPage(this.closeShow)
+    },
+    ...mapMutations(['changeAddPage'])
   }
 }
 </script>
@@ -53,9 +56,9 @@ export default {
 .wrapper
   wrapper()
   height: 100%
-  background: rgb(214,230,225)
+  background: $bgColor
   color: $titleColor
-  z-index: 9999
+  z-index: 99999
   .container
     min-height: 100%
     .content-main

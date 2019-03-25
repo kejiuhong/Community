@@ -1,12 +1,12 @@
 <template>
-  <div id="discover-wrapper">
-    discover
+  <div id="message-wrapper">
+    message
   </div>
 </template>
 
 <script>
 export default {
-  name: 'RecommentDiscover'
+  name: 'CommunityMessage'
 }
 </script>
 

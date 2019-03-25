@@ -21,8 +21,9 @@ export default {
 
 <style lang="stylus" scoped>
 @import '~styls/baseStyl/mixins.styl'
+@import '~styls/baseStyl/varible.styl'
 #app
   wrapper()
   width: 100%
-  background: rgba(214,230,225,.57)
+  background: $bgColor
 </style>

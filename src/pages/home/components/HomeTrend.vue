@@ -30,6 +30,8 @@ export default {
   width: 100%
   font-size: $fontText
 .trend-wrapper >>> .content-text-img
+  width: 4.2rem
+  max-height: 5.2rem
   margin-top: .2rem
 .trend-wrapper
   position:relative

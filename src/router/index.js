@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import CommunityHome from 'pages/home/CommunityHome'
-import AddTool from 'pages/tool/AddTool'
-import RecommentDiscover from 'pages/discover/RecommentDiscover'
-import RecommentMessage from 'pages/message/RecommentMessage'
+import CommunityHome from 'pages/home/CommunityHome' // 首页
+import CommunityDiscover from 'pages/discover/CommunityDiscover' // 动态页面
+import CommunityMessage from 'pages/message/CommunityMessage' // 信息页面
+import CommunityRelease from 'admin/release/CommunityRelease' // 发布动态
 
 Vue.use(Router)
 
@@ -15,12 +15,16 @@ export default new Router({
       component: CommunityHome
     }, {
       path: '/discover',
-      name: 'RecommentDiscover',
-      component: RecommentDiscover
+      name: 'CommunityDiscover',
+      component: CommunityDiscover
     }, {
       path: '/message',
-      name: 'RecommentMessage',
-      component: RecommentMessage
+      name: 'CommunityMessage',
+      component: CommunityMessage
+    }, {
+      path: '/release',
+      name: 'CommunityRelease',
+      component: CommunityRelease
     }
   ]
 })

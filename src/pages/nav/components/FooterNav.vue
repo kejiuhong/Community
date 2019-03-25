@@ -3,10 +3,9 @@
     <div class="nav iconfont"
         v-for="(item, index) of footerVal"
         :key="index"
-        :class="activeIndex === index ? 'activeClass':''"
+        :class="activeIndex === index || add === item.id ? 'activeClass':''"
         @click="handleClick(index, item.path)"
         v-html="item.name"
-        v-if="backgroundDefault(e)"
       >
       {{item.name}}
     </div>
@@ -23,11 +22,9 @@ export default {
   data () {
     return {
       activeIndex: 0,
-      isshow: false,
+      isShow: true,
       add: 'add'
     }
-  },
-  computed: {
   },
   methods: {
     handleClick (index, path) {
@@ -36,10 +33,12 @@ export default {
       this.activeIndex = index
       // 路由跳转
       this.$router.push(path)
+
+      if (index === 2) {
+        this.changeAddPage(this.isShow)
+      }
     },
-    backgroundDefault (e) {
-      console.log()
-    }
+    ...mapMutations(['changeAddPage'])
   }
 }
 </script>
@@ -58,7 +57,7 @@ export default {
   height: .7rem
   bottom: 0
   background: #fff
-  z-index: 9999
+  z-index: 9
   .nav
     flex: 1
     box-sizing: border-box

@@ -51,7 +51,7 @@ export default {
   width: 100%
   height: .7rem
   background: #fff
-  z-index: 9999
+  z-index: 9
   .nav
     flex: 1
     box-sizing: border-box
