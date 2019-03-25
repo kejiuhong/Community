@@ -6,6 +6,7 @@
         :class="activeIndex === index ? 'activeClass':''"
         @click="handleClick(index, item.path)"
         v-html="item.name"
+        v-if="backgroundDefault(e)"
       >
       {{item.name}}
     </div>
@@ -13,6 +14,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
   name: 'FooterNav',
   props: {
@@ -20,8 +22,12 @@ export default {
   },
   data () {
     return {
-      activeIndex: 0
+      activeIndex: 0,
+      isshow: false,
+      add: 'add'
     }
+  },
+  computed: {
   },
   methods: {
     handleClick (index, path) {
@@ -30,6 +36,9 @@ export default {
       this.activeIndex = index
       // 路由跳转
       this.$router.push(path)
+    },
+    backgroundDefault (e) {
+      console.log()
     }
   }
 }

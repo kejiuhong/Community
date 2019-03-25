@@ -2,16 +2,19 @@
   <div id="app">
     <community-navigator>
       <router-view/>
+      <add-tool></add-tool>
     </community-navigator>
   </div>
 </template>
 
 <script>
 import CommunityNavigator from '@/pages/nav/CommunityNavigator'
+import AddTool from '@/pages/tool/AddTool.vue'
 export default {
   name: 'App',
   components: {
-    CommunityNavigator
+    CommunityNavigator,
+    AddTool
   }
 }
 </script>

@@ -21,17 +21,20 @@
         "path": "/"
       }, {
         "id": "dicover",
-        "name":" &#xe608;"
+        "name":" &#xe608;",
+        "path": "/discover"
       }, {
         "id": "add",
         "name": "&#xe621;",
-        "path": "/tool"
+        "path": "#"
       }, {
         "id": "message",
-        "name": "&#xe62c;"
+        "name": "&#xe62c;",
+        "path": "/message"
       }, {
         "id": "me",
-        "name": "&#xe603;"
+        "name": "&#xe603;",
+        "path": "me"
       }
     ]
   }

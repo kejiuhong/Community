@@ -22,13 +22,18 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'AddTool',
   data () {
     return {
-      isshow: true,
       down: false
     }
+  },
+  computed: {
+    ...mapState({
+      isshow: 'show'
+    })
   },
   methods: {
     handleClickClose () {
@@ -36,7 +41,7 @@ export default {
       const _this = this
       setTimeout(() => {
         _this.isshow = false
-      }, 500)
+      }, 100)
     }
   }
 }
@@ -48,7 +53,7 @@ export default {
 .wrapper
   wrapper()
   height: 100%
-  background: rgba(255,255,255,.7)
+  background: rgb(214,230,225)
   color: $titleColor
   z-index: 9999
   .container
