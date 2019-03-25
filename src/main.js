@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import fastClick from 'fastclick'
 import vueAwesomeSwiper from 'vue-awesome-swiper'
+import animate from 'animate.css'
 import App from './App'
 import router from './router'
 import 'element-ui/lib/theme-chalk/index.css'

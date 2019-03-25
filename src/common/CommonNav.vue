@@ -5,7 +5,7 @@
         v-for="(item, index) of nativeNav"
         :key="index"
         :class="activeIndex === index ? 'activeClass':''"
-        @click="handleClick(index)"
+        @click="handleClick(index, item.path)"
         v-html="item.name"
       >
       {{item.name}}
@@ -31,10 +31,12 @@ export default {
     }
   },
   methods: {
-    handleClick (index) {
+    handleClick (index, path) {
       // console.log(index)
       this.nav.forEach((el) => { el.act = false })
       this.activeIndex = index
+      // 路由跳转
+      this.$router.push(path)
     }
   }
 }

@@ -17,13 +17,15 @@
     "footerNav": [
       {
         "id": "home",
-        "name": "&#xe607;"
+        "name": "&#xe607;",
+        "path": "/"
       }, {
         "id": "dicover",
         "name":" &#xe608;"
       }, {
         "id": "add",
-        "name": "&#xe621;"
+        "name": "&#xe621;",
+        "path": "/tool"
       }, {
         "id": "message",
         "name": "&#xe62c;"
