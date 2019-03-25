@@ -2,6 +2,12 @@
 
 > A Vue.js project
 
+这是一个使用vue.js开发社区的demo 
+  其中用到了 fastclick 解决移动端300ms  click的延迟时间  
+  
+ 
+
+
 ## Build Setup
 
 ``` bash
