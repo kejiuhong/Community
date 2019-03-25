@@ -2,10 +2,24 @@
 
 > A Vue.js project
 
-这是一个使用vue.js开发社区的demo 
-  其中用到了 fastclick 解决移动端300ms  click的延迟时间  
-  
+vue.js开发社区
+===
+
+功能描述
+---
  
+发布帖子，发布动态，私信聊天，评论/回复/点赞，小视频上传功能
+
+开发环境
+---
+使用 webpack 搭建的 vue.js 2.5.2 开发环境
+
+使用 fastclick 解决移动端浏览器点击 延迟 300ms 事件<Br>
+css样式  使用 stylus css预处理框架<br>
+css动画效果  使用 animate.css<br>
+使用 vue-awesome-swiper 插件 实现 banner 轮播图效果<br>
+使用  axios 进行跨域数据的传递 <br>
+使用 better-scroll 进行移动端页面上下滚动，刷新/数据加载功能
 
 
 ## Build Setup
