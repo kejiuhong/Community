@@ -9,13 +9,13 @@
       <!-- 图片区域  -->
       <div class="photo-scoped">
         <!-- 上传图片展示 -->
-        <div class="inputPhoto border" v-for="(item, index) of imgFile" :key="index" v-if="Delindex === index ? 'show' : true">
-          <i class="delPhoto" @click="handleClickDel(index)">X</i>
+        <div class="inputPhoto border" v-for="(item, index) of imgFile" :key="index" v-if="DelIndex === index ? 'unShow' : 'show'">
+          <i class="delPhoto" @click="handleClickDel(index, item)">X</i>
           <img class="imageFile" :src="item">
         </div>
         <!-- 上传按钮 -->
         <div class="inputPhoto border" @change="handleClickGet">
-          <input class="botton" name="photo" type="file" accept="video/*|image/*" ref="inputImg" />
+          <input class="botton" name="photo" type="file" accept="video/*|image/*" ref="inputImg" multiple />
         </div>
       </div>
     </form>
@@ -29,8 +29,9 @@ export default {
   data () {
     return {
       value: '',
-      show: false,
-      Delindex: '-1',
+      show: true,
+      unShow: false,
+      DelIndex: '-1',
       imgFile: []
     }
   },
@@ -42,21 +43,27 @@ export default {
   methods: {
     handleClickGet () {
       const _this = this
+      console.log(_this.$refs)
       const inputValue = _this.$refs.inputImg
-      const file = inputValue.files[0]
-      // console.log(file)
-      let reader = new FileReader()
-      reader.readAsDataURL(file)
-      reader.onload = function (inputValue) {
+      const file = inputValue.files
+      console.log(file)
+      if (!file) {
+        return
+      }
+      for (let i of file) {
+        let reader = new FileReader()
+        reader.readAsDataURL(i)
+      }
+      reader.onload = function () {
         // 读取完成后，将结果赋值给img的src
-        // console.log(reader.result)
+        console.log(reader.result)
         _this.imgFile.push(reader.result)
       }
-    },
+  },
     // 点击删除图片
     handleClickDel (index) {
       console.log(index)
-      this.Delindex = index
+      this.DelIndex = index
     }
   }
 }
