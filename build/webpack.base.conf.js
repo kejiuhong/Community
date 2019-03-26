@@ -38,6 +38,7 @@ module.exports = {
       '@': resolve('src'),
       'pages': resolve('src/pages'),
       'styls': resolve('src/assets/style'),
+      'js': resolve('src/assets/js'),
       'commons': resolve('src/common'),
       'admin': resolve('src/admin')
     }
