@@ -3,27 +3,29 @@
     <slot>推荐帖子</slot>
     <div class="container">
       <!-- 内容 -->
-      <div class="content border-top" v-for="item of content" :key="item.id">
+      <div class="content border-top" v-for="item of userContent" :key="item.id" v-if="item.content">
         <!-- 内容标题 -->
         <div>
           <h2 class="content-title">
             <i class="rec-icon iconfont">&#xe636;</i>
-            {{item.title}}
+            {{item.content.title}}
           </h2>
           <p class="title-ifo">
             <i class="avator" v-if="item.avatar">
               <img class="images" :src="item.avatar" alt="">
-            </i>{{item.username}}：{{item.inputDate}} {{item.address}}
+            </i>{{item.username}}：{{item.content.inputDate}} {{item.content.address}}
           </p>
         </div>
         <!-- 内容标题 end -->
         <!-- 内容主体 -->
         <div class="content-text">
+          <!-- 文字 -->
           <p class="content-text-wrapper">
-            {{item.text}}
+            {{item.content.text}}
           </p>
-          <div class="content-text-img" v-if="item.contentImg[0].imgUrl">
-            <img class="images" :src="item.contentImg[0].imgUrl">
+          <!-- 图片 -->
+          <div class="content-text-img" v-if="item.content.images">
+            <img class="images" :src="item.content.images[0].imgUrl">
           </div>
         </div>
         <!-- 内容主体 end -->
@@ -35,7 +37,7 @@
           </div>
           <div class="content-ifo-right">
             <span><i class="iconfont">&#xe62a;</i>25</span>
-            <span><i class="iconfont">&#xe62a;</i>{{item.contentImg.length}}</span>
+            <span><i class="iconfont">&#xe62a;</i>{{item.content.images.length}}</span>
           </div>
         </div>
         <!-- 内容评论等 end -->
@@ -49,7 +51,7 @@
 export default {
   name: 'CommonTrendShow',
   props: {
-    content: Array
+    userContent: Array
   }
 }
 </script>
@@ -72,6 +74,7 @@ export default {
       .rec-icon
         color: $textActive
         font-size: .32rem
+    // 头像
     .avator
       display: inline-block
       width: .3rem
@@ -81,6 +84,7 @@ export default {
       .images
         width: 100%
         border-radius: 5rem
+    // 用户名下方信息
     .title-ifo
       font-size: .2rem
       color: $textColor

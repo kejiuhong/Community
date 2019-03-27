@@ -1,11 +1,13 @@
 <template>
-  <common-scroll>
-    <div class="wrapper">
-      <home-swiper :img="images"></home-swiper>
-      <home-recomment :contentRecomment="recomment"></home-recomment>
-      <home-trend :contentTrend="recomment"></home-trend>
-    </div>
-  </common-scroll>
+  <keep-alive>
+    <common-scroll>
+      <div class="wrapper">
+        <home-swiper :img="images"></home-swiper>
+        <home-recomment :contentRecomment="recomment"></home-recomment>
+        <home-trend :contentTrend="recomment"></home-trend>
+      </div>
+    </common-scroll>
+  </keep-alive>
 </template>
 
 <script>
@@ -24,7 +26,7 @@ export default {
   },
   methods: {
     getSwiper () {
-      axios.get('/api/home.json')
+      axios.get('/api/user.json')
         .then(this.getSwiperSucc)
     },
     getSwiperSucc (res) {
@@ -32,9 +34,10 @@ export default {
       res = res.data
       if (res.ret && res.data) {
         const data = res.data
-        this.images = data.images
-        this.recomment = data.recomment
-        // console.log(data.recomment)
+        this.images = data.bannerImg
+        this.recomment = data.user
+        console.log(data.user)
+        console.log(data.user[0].content.images[0].imgUrl)
       }
     }
   },

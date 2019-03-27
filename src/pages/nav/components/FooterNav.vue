@@ -7,7 +7,6 @@
         @click="handleClick(index, item.path)"
         v-html="item.name"
       >
-      {{item.name}}
     </div>
   </div>
 </template>
@@ -29,7 +28,6 @@ export default {
   methods: {
     handleClick (index, path) {
       // console.log(index)
-      this.footerVal.forEach((el) => { el.act = false })
       this.activeIndex = index
       // 路由跳转
       this.$router.push(path)

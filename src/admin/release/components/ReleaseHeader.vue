@@ -1,6 +1,6 @@
 <template>
   <div class="release-header border-bottom">
-    <span>取消</span>
+    <span @click="handleClickBack">取消</span>
     <h1 class="title">新动态</h1>
     <span style="color:#27cf4d">发布</span>
   </div>
@@ -14,7 +14,9 @@ export default {
       length: 140
     }
   },
-  computed: {
+  methods: {
+    handleClickBack () {
+    }
   }
 }
 </script>

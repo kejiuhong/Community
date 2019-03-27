@@ -7,32 +7,18 @@
         <span class="word-count">{{valueLength}}</span>
       </div>
       <!-- 图片区域  -->
-      <div class="photo-scoped">
-        <!-- 上传图片展示 -->
-        <div class="inputPhoto border" v-for="(item, index) of imgFile" :key="index" v-if="DelIndex === index ? 'unShow' : 'show'">
-          <i class="delPhoto" @click="handleClickDel(index, item)">X</i>
-          <img class="imageFile" :src="item">
-        </div>
-        <!-- 上传按钮 -->
-        <div class="inputPhoto border" @change="handleClickGet">
-          <input class="botton" name="photo" type="file" accept="video/*|image/*" ref="inputImg" multiple />
-        </div>
-      </div>
+      <common-update-img></common-update-img>
     </form>
   </div>
 </template>
 
 <script>
-import 'js/postContent'
+import CommonUpdateImg from 'commons/CommonUpdateImg'
 export default {
   name: 'ReleaseArtical',
   data () {
     return {
-      value: '',
-      show: true,
-      unShow: false,
-      DelIndex: '-1',
-      imgFile: []
+      value: ''
     }
   },
   computed: {
@@ -40,31 +26,8 @@ export default {
       return 140 - (this.value.length)
     }
   },
-  methods: {
-    handleClickGet () {
-      const _this = this
-      console.log(_this.$refs)
-      const inputValue = _this.$refs.inputImg
-      const file = inputValue.files
-      console.log(file)
-      if (!file) {
-        return
-      }
-      for (let i of file) {
-        let reader = new FileReader()
-        reader.readAsDataURL(i)
-      }
-      reader.onload = function () {
-        // 读取完成后，将结果赋值给img的src
-        console.log(reader.result)
-        _this.imgFile.push(reader.result)
-      }
-  },
-    // 点击删除图片
-    handleClickDel (index) {
-      console.log(index)
-      this.DelIndex = index
-    }
+  components: {
+    CommonUpdateImg
   }
 }
 </script>
@@ -82,7 +45,7 @@ export default {
   position: absolute;
   left: 0;
   right: 0;
-  padding: .4rem
+  padding: .2rem
   color: $textColor
   .content-scoped
     position: relative
@@ -94,40 +57,5 @@ export default {
     .word-count
       position: absolute
       bottom: .5rem
-      right: .4rem
-  .photo-scoped
-    display: inline-block
-    width: 100%
-    float: left
-    .inputPhoto
-      position: relative
-      overflow: hidden
-      display: inline-block
-      width: 2rem
-      height: 2rem
-      float: left
-      margin: .1rem
-      border-radius: .1rem
-      .imageFile
-        width: 100%
-        height: 100%
-      .delPhoto
-        position: absolute
-        right: .05rem
-        top: .05rem
-        display: inline-block
-        width: .3rem
-        height: .3rem
-        background: rgba(0,0,0,.6)
-        border-radius: 5rem
-        text-align: center
-        line-height: .3rem
-      .botton
-        display:inline-block
-        position: absolute
-        left: 0
-        top: 0
-        bottom: 0
-        opacity: 0
-        cursor: pointer
+      right: .2rem
 </style>

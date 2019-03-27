@@ -6,7 +6,6 @@
         :key="index"
         :class="activeIndex === index ? 'activeClass':''"
         @click="handleClick(index, item.path)"
-        v-html="item.name"
       >
       {{item.name}}
     </div>

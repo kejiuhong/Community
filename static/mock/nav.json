@@ -5,10 +5,12 @@
     "headerNav": [
       {
         "id": "home",
-        "name": "首页"
+        "name": "首页",
+        "path": "/"
       }, {
         "id": "dicover",
-        "name":" 动态"
+        "name":" 动态",
+        "path": "/discover"
       }, {
         "id": "nearby",
         "name": "附近"

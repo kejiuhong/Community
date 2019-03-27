@@ -1,6 +1,6 @@
 <template>
   <div class="trend-wrapper">
-    <common-trend-show :content="contentTrend">
+    <common-trend-show :userContent="contentTrend">
       <div class="title">热门动态</div>
     </common-trend-show>
   </div>
