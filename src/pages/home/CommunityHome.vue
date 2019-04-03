@@ -27,18 +27,17 @@ export default {
   methods: {
     getSwiper () {
       axios.get('/api/user.json')
-        .then(this.getSwiperSucc)
-    },
-    getSwiperSucc (res) {
-      // console.log(res)
-      res = res.data
-      if (res.ret && res.data) {
-        const data = res.data
-        this.images = data.bannerImg
-        this.recomment = data.user
-        console.log(data.user)
-        console.log(data.user[0].content.images[0].imgUrl)
-      }
+        .then(res => {
+          console.log(res)
+          res = res.data
+          if (res.ret && res.data) {
+            const data = res.data
+            this.images = data.bannerImg
+            this.recomment = data.user
+            console.log(data.user)
+            console.log(data.user[0].content.images[0].imgUrl)
+          }
+        })
     }
   },
   mounted () {
