@@ -1,6 +1,6 @@
 <template>
   <div class="trend-wrapper">
-    <common-trend-show :userContent="contentTrend">
+    <common-trend-show :post="contentTrend">
       <div class="title">热门动态</div>
     </common-trend-show>
   </div>
@@ -30,9 +30,12 @@ export default {
   width: 100%
   font-size: $fontText
 .trend-wrapper >>> .content-text-img
-  width: 4.2rem
-  max-height: 5.2rem
+  width: 100%
   margin-top: .2rem
+.trend-wrapper >>> .content .content-text .content-text-img .images
+    width: 2.2rem
+    float: left
+    margin-left: .1rem
 .trend-wrapper
   position:relative
   top: .9rem

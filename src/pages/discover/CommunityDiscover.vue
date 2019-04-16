@@ -1,6 +1,8 @@
 <template>
   <div id="discover-wrapper">
-    discover
+    <!-- 发布状态 -->
+    
+    <!-- 发布状态 end -->
   </div>
 </template>
 
@@ -11,4 +13,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  @import '~styls/baseStyl/varible.styl'
+  #discover-wrapper
+    position: absolute
+    top: $navH
 </style>

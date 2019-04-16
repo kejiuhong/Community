@@ -1,5 +1,5 @@
 <template>
-    <common-nav class="header" :nav='headerVal'>
+    <common-nav class="header border-bottom" :nav='headerVal'>
       <template v-slot:left>
         <div class="navIcon iconfont">&#xe61b;</div>
       </template>

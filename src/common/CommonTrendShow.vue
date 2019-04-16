@@ -3,17 +3,17 @@
     <slot>推荐帖子</slot>
     <div class="container">
       <!-- 内容 -->
-      <div class="content border-top" v-for="item of userContent" :key="item.id" v-if="item.content">
+      <div class="content border-top" v-for="item of post" :key="item.id">
         <!-- 内容标题 -->
         <div>
           <h2 class="content-title">
             <i class="rec-icon iconfont">&#xe636;</i>
-            {{item.content.title}}
+            {{item.title}}
           </h2>
           <p class="title-ifo">
-            <i class="avator" v-if="item.avatar">
-              <img class="images" :src="item.avatar" alt="">
-            </i>{{item.username}}：{{item.content.inputDate}} {{item.content.address}}
+            <i class="avator" >
+              <img class="images" :src="item.avator" alt="">
+            </i>{{item.alias}}：{{item.inputDate}} {{item.address}}
           </p>
         </div>
         <!-- 内容标题 end -->
@@ -21,11 +21,11 @@
         <div class="content-text">
           <!-- 文字 -->
           <p class="content-text-wrapper">
-            {{item.content.text}}
+            {{item.text}}
           </p>
           <!-- 图片 -->
-          <div class="content-text-img" v-if="item.content.images">
-            <img class="images" :src="item.content.images[0].imgUrl">
+          <div class="content-text-img" v-if="item.images">
+            <img class="images" v-for="item of item.images" :key="item.id" :src="item.imgUrl">
           </div>
         </div>
         <!-- 内容主体 end -->
@@ -37,7 +37,7 @@
           </div>
           <div class="content-ifo-right">
             <span><i class="iconfont">&#xe62a;</i>25</span>
-            <span><i class="iconfont">&#xe62a;</i>{{item.content.images.length}}</span>
+            <slot name="pictures" v-bind:pictures = "item.images"></slot>
           </div>
         </div>
         <!-- 内容评论等 end -->
@@ -51,7 +51,7 @@
 export default {
   name: 'CommonTrendShow',
   props: {
-    userContent: Array
+    post: Array
   }
 }
 </script>
@@ -98,6 +98,7 @@ export default {
         ellipsis()
         max-height: 1.2rem
         font-size: $fontText
+        color:$textColor
       .content-text-img
         overflow: hidden
         display:inline-block
