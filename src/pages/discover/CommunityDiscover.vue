@@ -1,6 +1,5 @@
 <template>
-  <common-scroll>
-    <div id="discover-wrapper"  ref="discoverWrapper">
+    <div id="discover-wrapper">
       <!-- 发布状态 -->
       <div class="discover-publish">
         <div class="user-avator">
@@ -15,7 +14,7 @@
       <!-- 发布状态 end -->
 
       <!-- 动态展示 -->
-      <div class="discover-show">
+      <div class="discover-show" ref="discoverShow">
         <!-- 动态展示导航 -->
         <div class="show-nav">
           <a v-for="(item, index) of subheading" :key="index" href="">{{item}}</a>
@@ -100,7 +99,6 @@
       </div>
       <!-- 动态展示 end -->
     </div>
-  </common-scroll>
 </template>
 
 <script>
@@ -109,15 +107,19 @@ export default {
   name: 'CommunityDiscover',
   data () {
     return {
-      subheading: [ '热门', '附近', '此刻' ]
+      subheading: [ '热门', '附近', '此刻' ],
+      pullingDownY: true
     }
+  },
+  created () {
+    this.crollHide()
   },
   methods: {
     // 页面滚动到一定高度，顶部导航隐藏
     crollHide () {
-      console.log(document.documentElement.scrollTop)
-      const headerHeight = this.$refs.discoverWrapper.scrollTop
-      console.log(headerHeight)
+      // console.log(document.Element.offsetTop)
+      // const headerHeight = this.$refs.discoverShow.currentTarget.offsetTop
+      console.log(this.$refs.discoverShow.top)
     }
   },
   mounted () {
@@ -135,8 +137,8 @@ export default {
 <style lang="stylus" scoped>
   @import '~styls/baseStyl/varible.styl'
   #discover-wrapper
+    overflow: hidden
     position: absolute
-    top: $navH
     left: 0
     right: 0
     .discover-publish

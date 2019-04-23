@@ -8,6 +8,16 @@
 import Bscroll from 'better-scroll'
 export default {
   name: 'CommonScroll',
+  props: {
+    pullingDown: {
+      type: Boolean,
+      default: false
+    },
+    pullingDownY: {
+      type: Boolean,
+      default: false
+    }
+  },
   mounted () {
     this.$nextTick(() => {
       // $ref绑定元素
@@ -25,13 +35,15 @@ export default {
             threshold: -20 // 当上拉距离超过30px时触发 pullingUp 事件
           }
         })
-        this.scroll.on('pullingUp', () => {
-          console.log('处理上拉加载操作')
-          setTimeout(() => {
-            // 事情做完，需要调用此方法告诉 better-scroll 数据已加载，否则上拉事件只会执行一次
-            this.scroll.finishPullUp()
-          }, 2000)
-        })
+        if (this.pullingDown) {
+          this.scroll.on('pullingUp', () => {
+            console.log('处理上拉加载操作')
+            setTimeout(() => {
+              // 事情做完，需要调用此方法告诉 better-scroll 数据已加载，否则上拉事件只会执行一次
+              this.scroll.finishPullUp()
+            }, 2000)
+          })
+        }
         this.scroll.on('pullingDown', () => {
           console.log('处理下拉刷新操作')
           setTimeout(() => {
@@ -40,6 +52,13 @@ export default {
             this.scroll.finishPullDown()
           }, 500)
         })
+        if (this.pullingDownY) {
+          this.scroll.on('scrollStart', (pos) => {
+            console.log('ok')
+            console.log(pos)
+            this.$emit('change')
+          })
+        }
       } else if (!this.$ref.scrollWrapper) {
         return false
       } else {
