@@ -1,16 +1,18 @@
 <template>
     <div id="discover-wrapper">
       <!-- 发布状态 -->
-      <div class="discover-publish">
-        <div class="user-avator">
-          <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553424636502&di=242f0e648ce31cefd368ccd81913bce4&imgtype=0&src=http%3A%2F%2Fg.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F8cb1cb1349540923d33ac7c29058d109b3de493e.jpg" alt="">
+      <router-link to="/release">
+        <div class="discover-publish">
+          <div class="user-avator">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553424636502&di=242f0e648ce31cefd368ccd81913bce4&imgtype=0&src=http%3A%2F%2Fg.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F8cb1cb1349540923d33ac7c29058d109b3de493e.jpg" alt="">
+          </div>
+          <div class="user-text">
+            要不要记录这一刻的心情...
+          </div>
+          <div class="publish-icon">
+          </div>
         </div>
-        <div class="user-text">
-          要不要记录这一刻的心情...
-        </div>
-        <div class="publish-icon">
-        </div>
-      </div>
+      </router-link>
       <!-- 发布状态 end -->
 
       <!-- 动态展示 -->
@@ -22,93 +24,51 @@
         <!-- 动态展示导航 end -->
 
         <!-- 动态内容展示 -->
-        <div class="show-content border-top">
+        <div class="show-content border-top" v-for="item of trends" :key="item.id">
           <div class="show-content-left">
-            <img class="content-avator" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553424636502&di=242f0e648ce31cefd368ccd81913bce4&imgtype=0&src=http%3A%2F%2Fg.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F8cb1cb1349540923d33ac7c29058d109b3de493e.jpg" alt="">
+            <img class="content-avator" :src="item.avator" alt="">
           </div>
           <div class="show-content-right">
             <div class="content-head">
               <span style="display:inline-block">
-                <p>lili</p>
-                <p class="publish-time">1253km . 04.17</p>
+                <p style="font-size:.24rem">{{item.alias}}</p>
+                <p class="publish-time">{{item.distance}}km . {{item.date}}</p>
               </span>
               <span style="float:right; color:#0bec52; font-weight:bold; font-size:.24rem">关注</span>
             </div>
             <div class="content-main">
-              <p class="content-main-text">官方指南假设你已了解关于 HTML、CSS 和 JavaScript 的中级知识。如果你刚开始学习前端开发，将框架作为你的第一步可能不是最好的主意——掌握好基础知识再来吧！之前有其它框架的使用经验会有帮助，但这不是必需的。</p>
-              <img class="content-main-img" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555427657232&di=7241af1f737f0f13dca2c1aad53854cc&imgtype=0&src=http%3A%2F%2Fimg.91jmw.com%2Fuploads%2Fueditor%2Fimage%2F20190401%2F1554097931511635.jpg" alt="">
+              <p class="content-main-text" v-if="item.text">{{item.text}}</p>
+              <div ref="contentImg" v-if="item.images">
+                <img class="content-main-img" v-for="img of item.images" :key="img.id" :src="img.imagUrl" :class="{contentMainImgs:item.images.length>1?true:false}">
+              </div>
             </div>
             <div class="content-ifo">
-              <span><i class="iconfont">&#xe60d;</i> 8720</span>
-              <span><i class="iconfont">&#xe60d;</i> 40</span>
-              <span><i class="iconfont">&#xe616;</i> 76</span>
+              <span><i class="iconfont">&#xe60d;</i>{{item.comment.length}}</span>
+              <span><i class="iconfont">&#xe60d;</i>{{item.like}}</span>
+              <span><i class="iconfont">&#xe616;</i>{{item.viewed}}</span>
             </div>
           </div>
         </div>
         <!-- 动态内容展示 end -->
-        <!-- 动态内容展示 -->
-        <div class="show-content border-top">
-          <div class="show-content-left">
-            <img class="content-avator" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553424636502&di=242f0e648ce31cefd368ccd81913bce4&imgtype=0&src=http%3A%2F%2Fg.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F8cb1cb1349540923d33ac7c29058d109b3de493e.jpg" alt="">
-          </div>
-          <div class="show-content-right">
-            <div class="content-head">
-              <span style="display:inline-block">
-                <p>lili</p>
-                <p class="publish-time">1253km . 04.17</p>
-              </span>
-              <span style="float:right; color:#0bec52; font-weight:bold; font-size:.24rem">关注</span>
-            </div>
-            <div class="content-main">
-              <p class="content-main-text">官方指南假设你已了解关于 HTML、CSS 和 JavaScript 的中级知识。如果你刚开始学习前端开发，将框架作为你的第一步可能不是最好的主意——掌握好基础知识再来吧！之前有其它框架的使用经验会有帮助，但这不是必需的。</p>
-              <img class="content-main-img" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555427657232&di=7241af1f737f0f13dca2c1aad53854cc&imgtype=0&src=http%3A%2F%2Fimg.91jmw.com%2Fuploads%2Fueditor%2Fimage%2F20190401%2F1554097931511635.jpg" alt="">
-            </div>
-            <div class="content-ifo">
-              <span><i class="iconfont">&#xe60d;</i> 8720</span>
-              <span><i class="iconfont">&#xe60d;</i> 40</span>
-              <span><i class="iconfont">&#xe616;</i> 76</span>
-            </div>
-          </div>
-        </div>
-        <!-- 动态内容展示 end -->
-        <!-- 动态内容展示 -->
-        <div class="show-content border-top">
-          <div class="show-content-left">
-            <img class="content-avator" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553424636502&di=242f0e648ce31cefd368ccd81913bce4&imgtype=0&src=http%3A%2F%2Fg.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F8cb1cb1349540923d33ac7c29058d109b3de493e.jpg" alt="">
-          </div>
-          <div class="show-content-right">
-            <div class="content-head">
-              <span style="display:inline-block">
-                <p>lili</p>
-                <p class="publish-time">1253km . 04.17</p>
-              </span>
-              <span style="float:right; color:#0bec52; font-weight:bold; font-size:.24rem">关注</span>
-            </div>
-            <div class="content-main">
-              <p class="content-main-text">官方指南假设你已了解关于 HTML、CSS 和 JavaScript 的中级知识。如果你刚开始学习前端开发，将框架作为你的第一步可能不是最好的主意——掌握好基础知识再来吧！之前有其它框架的使用经验会有帮助，但这不是必需的。</p>
-              <img class="content-main-img" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555427657232&di=7241af1f737f0f13dca2c1aad53854cc&imgtype=0&src=http%3A%2F%2Fimg.91jmw.com%2Fuploads%2Fueditor%2Fimage%2F20190401%2F1554097931511635.jpg" alt="">
-            </div>
-            <div class="content-ifo">
-              <span><i class="iconfont">&#xe60d;</i> 8720</span>
-              <span><i class="iconfont">&#xe60d;</i> 40</span>
-              <span><i class="iconfont">&#xe616;</i> 76</span>
-            </div>
-          </div>
-        </div>
-        <!-- 动态内容展示 end -->
+
       </div>
       <!-- 动态展示 end -->
     </div>
 </template>
 
 <script>
+import axios from 'axios'
 import CommonScroll from 'commons/CommonScroll'
+import { mapMutations } from 'vuex'
 export default {
   name: 'CommunityDiscover',
   data () {
     return {
       subheading: [ '热门', '附近', '此刻' ],
-      pullingDownY: true
+      pullingDownY: true,
+      disShow: false,
+      trends: [],
+      width: '100%'
     }
   },
   created () {
@@ -118,12 +78,39 @@ export default {
     // 页面滚动到一定高度，顶部导航隐藏
     crollHide () {
       // console.log(document.Element.offsetTop)
-      // const headerHeight = this.$refs.discoverShow.currentTarget.offsetTop
-      console.log(this.$refs.discoverShow.top)
+      const offTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop
+      // console.log(offTop)
+      if (offTop >= 117) {
+        this.hiddenNav(this.disShow)
+      } else {
+        this.hiddenNav(!this.disShow)
+      }
+    },
+    ...mapMutations(['hiddenNav']),
+    achieveImg () {
+      const images = this.$refs.contentImg.children
+      console.log(images[0].width)
+      if (images.length > 1) {
+       this.width = 2+'rem'
+      }
+    },
+    getTrends () {
+      axios.get('/api/trends.json')
+        .then(this.trendSucc)
+    },
+    trendSucc (res) {
+      // console.log(res)
+      res = res.data
+      if (res.ret && res.data) {
+        const data = res.data
+        this.trends = data
+      }
     }
   },
   mounted () {
     window.addEventListener('scroll', this.crollHide)
+    this.getTrends()
+    this.achieveImg()
   },
   beforeDestroy () {
     window.addEventListener('scroll', this.crollHide)
@@ -191,6 +178,8 @@ export default {
             height: .6rem
             border-radius: 50%
         .show-content-right
+          width: 88%
+          padding-right: .1rem;
           overflow:hidden
           color: $textColor
           .content-head
@@ -210,6 +199,9 @@ export default {
             .content-main-img
               width: 100%
               border-radius: $radius
+            .contentMainImgs
+              width: 1.8rem !important
+              margin: .05rem
           .content-ifo
             display: flex
             justify-content: space-between

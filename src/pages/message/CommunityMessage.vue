@@ -1,6 +1,6 @@
 <template>
   <div id="message-wrapper">
-    message
+    <!-- 消息框 -->
   </div>
 </template>
 
