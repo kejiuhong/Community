@@ -10,16 +10,16 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-04-15 16:10:55
+Date: 2019-04-25 17:24:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for `content`
+-- Table structure for `post`
 -- ----------------------------
-DROP TABLE IF EXISTS `content`;
-CREATE TABLE `content` (
+DROP TABLE IF EXISTS `post`;
+CREATE TABLE `post` (
   `id` int(11) NOT NULL,
   `alias` varchar(255) NOT NULL COMMENT '昵称',
   `text` varchar(255) DEFAULT NULL COMMENT '文字内容',
@@ -31,7 +31,27 @@ CREATE TABLE `content` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of content
+-- Records of post
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `trends`
+-- ----------------------------
+DROP TABLE IF EXISTS `trends`;
+CREATE TABLE `trends` (
+  `id` int(11) NOT NULL,
+  `alias` varchar(255) DEFAULT NULL,
+  `text` varchar(255) DEFAULT NULL,
+  `images` blob,
+  `vidio` blob,
+  `date` int(11) DEFAULT NULL,
+  `comment` varchar(255) DEFAULT NULL,
+  `like` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of trends
 -- ----------------------------
 
 -- ----------------------------
