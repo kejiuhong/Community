@@ -56,7 +56,6 @@ export default {
           this.scroll.on('scrollStart', (pos) => {
             console.log('ok')
             console.log(pos)
-            this.$emit('change')
           })
         }
       } else if (!this.$ref.scrollWrapper) {

@@ -1,4 +1,6 @@
 <template>
+  <keep-alive>
+    <common-scroll :pullingDownY="pullingDownY">
     <div id="discover-wrapper">
       <!-- 发布状态 -->
       <router-link to="/release">
@@ -54,6 +56,8 @@
       </div>
       <!-- 动态展示 end -->
     </div>
+  </common-scroll>
+  </keep-alive>
 </template>
 
 <script>
@@ -87,13 +91,6 @@ export default {
       }
     },
     ...mapMutations(['hiddenNav']),
-    achieveImg () {
-      const images = this.$refs.contentImg.children
-      console.log(images[0].width)
-      if (images.length > 1) {
-       this.width = 2+'rem'
-      }
-    },
     getTrends () {
       axios.get('/api/trends.json')
         .then(this.trendSucc)
@@ -110,7 +107,6 @@ export default {
   mounted () {
     window.addEventListener('scroll', this.crollHide)
     this.getTrends()
-    this.achieveImg()
   },
   beforeDestroy () {
     window.addEventListener('scroll', this.crollHide)
@@ -125,7 +121,6 @@ export default {
   @import '~styls/baseStyl/varible.styl'
   #discover-wrapper
     overflow: hidden
-    position: absolute
     left: 0
     right: 0
     .discover-publish

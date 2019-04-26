@@ -16,6 +16,7 @@ export default {
   },
   methods: {
     handleClickBack () {
+      this.$router.go(-1)
     }
   }
 }

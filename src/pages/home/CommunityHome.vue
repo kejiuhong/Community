@@ -1,7 +1,7 @@
 <template>
   <keep-alive>
     <common-scroll>
-      <div class="wrapper">
+      <div class="home-wrapper">
         <home-swiper :img="images"></home-swiper>
         <home-recomment :postRecomment="recomment"></home-recomment>
         <home-trend :contentTrend="recomment"></home-trend>

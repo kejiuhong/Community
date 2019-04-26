@@ -46,7 +46,7 @@ export default {
   left: 0;
   right: 0;
   padding: .2rem
-  color: $textColor
+  color: #8c8a8a
   .content-scoped
     position: relative
     .inputValue
@@ -54,6 +54,8 @@ export default {
       height: 4.5rem
       padding-bottom: .2rem
       font-weight: 400
+      font-size: .24rem
+      color: #868282
     .word-count
       position: absolute
       bottom: .5rem

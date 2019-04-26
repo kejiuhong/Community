@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" v-show="this.isshow">
+  <div class="addtool-wrapper" v-show="this.isshow">
     <div class="container">
       <div class="content-main animated bounceInUp" :class="{fadeOutDownBig:down}">
         <div class="add-title">
@@ -53,7 +53,8 @@ export default {
 <style lang="stylus" scoped>
 @import '~styls/baseStyl/varible.styl'
 @import '~styls/baseStyl/mixins.styl'
-.wrapper
+.addtool-wrapper
+  overflow: hidden
   wrapper()
   height: 100%
   background: $bgColor
