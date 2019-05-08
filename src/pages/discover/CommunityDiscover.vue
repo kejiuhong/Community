@@ -91,7 +91,7 @@ export default {
       const images = this.$refs.contentImg.children
       console.log(images[0].width)
       if (images.length > 1) {
-       this.width = 2+'rem'
+        this.width = 2 + 'rem'
       }
     },
     getTrends () {
